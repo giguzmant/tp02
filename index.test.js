@@ -37,3 +37,88 @@ la información necesario a la empresa que nos pidió el desarrollo:
     Para agregar este dato, tenemos que usar la función desarrollada en el punto 
     anterior obtenerIdVenta
 */
+
+const vendedoras = ["Ada", "Grace", "Hedy", "Sheryl"];
+
+const ventas = [
+  [ 100000000, 4, 2, 2019, 'Grace', 'Centro', ['Monitor GPRS 3000', 'Motherboard ASUS 1500'] ],
+  [ 100000001, 1, 1, 2019, 'Ada', 'Centro', ['Monitor GPRS 3000', 'Motherboard ASUS 1500'] ],
+  [ 100000002, 2, 1, 2019, 'Grace', 'Caballito', ['Monitor ASC 543', 'Motherboard MZI', 'HDD Toyiva'] ],
+  [ 100000003, 10, 1, 2019, 'Ada', 'Centro', ['Monitor ASC 543', 'Motherboard ASUS 1200'] ],
+  [ 100000004, 12, 1, 2019, 'Grace', 'Caballito', ['Monitor GPRS 3000', 'Motherboard ASUS 1200'] ],
+  [ 100000005, 21, 3, 2019, 'Hedy', 'Caballito', ['Monitor ASC 543', 'Motherboard ASUS 1200', 'RAM Quinston'] ]
+]
+
+const precios = [
+    [ 'Monitor GPRS 3000', 200 ],
+    [ 'Monitor ASC 543', 250 ],
+
+    [ 'Motherboard ASUS 1500', 120 ],
+    [ 'Motherboard ASUS 1200', 100 ],
+    [ 'Motherboard MZI', 30 ],
+
+    [ 'HDD Toyiva', 90 ],
+    [ 'HDD Wezter Dishital', 75 ],
+
+    [ 'RAM Quinston', 110 ],
+    [ 'RAM Quinston Fury', 230 ]
+]
+
+const sucursales = ['Centro', 'Caballito'];
+
+const precioMaquina = (monitor,motherboard,hdd,ram) =>{
+
+    let monit= precios.find((moni)=>{
+        return moni[0] == monitor;
+    })
+
+    let mother= precios.find((mother)=>{
+        return mother[0] == motherboard;
+    })
+
+    let memoriaHdd= precios.find((memoHdd)=>{
+        return memoHdd[0] == hdd;
+    })
+
+    let memoriaRam= precios.find((memoRam)=>{
+        return memoRam[0] == ram;
+    })
+    
+    return  sum = monit[1] + mother[1] + memoriaHdd[1] + memoriaRam[1];
+    
+};
+
+test('Suma total de precio de maquina',()=>{
+
+    expect(precioMaquina('Monitor GPRS 3000', 'Motherboard ASUS 1500', 'HDD Toyiva', 'RAM Quinston')).toBe(520);
+
+});
+
+/*
+const cantidadVentasComponente = (componente) =>{
+
+    let index = ventas.filter((component)=>{
+        return component[6] == componente
+    })
+
+    let contador = 0;
+    for(let i=0; i<ventas.length; i++){
+        if(componente == index){
+            contador++;
+        }
+    }
+   
+    return contador;
+
+};
+
+test('Cantidad de veces que fue vendido el componente',()=>{
+    
+
+});
+*/
+
+
+
+
+
