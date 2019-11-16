@@ -33,21 +33,6 @@ const sucursales = ['Centro', 'Caballito'];
     es la suma de los precios de cada componente incluido.
 */
 
-const precioMaquina = (monitor,motherboard,hdd,ram) =>{
-    let sumaTotal=0;
-        for(let component of precios){
-            if ((component [0] == monitor) || (component[0]==motherboard) || (component[0]==hdd) || (component[0] == ram)){
-                sumaTotal+=component[1]
-            }
-        }
-    return sumaTotal;
-};
-
-test('Suma total de precio de maquina',()=>{
-    expect(precioMaquina('Monitor GPRS 3000', 'Motherboard ASUS 1500', 'HDD Toyiva', 'RAM Quinston')).toBe(520);
-});
-
-
 /* 2.  cantidadVentasComponente(componente): recibe el nombre de un componente
     y devuelve la cantidad de veces que fue vendido. La lista de ventas no se 
     pasa por parámetro, se asume que está identificada por la variable ventas.
