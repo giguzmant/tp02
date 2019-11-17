@@ -55,6 +55,24 @@ test('Suma total de precio de maquina',()=>{
     tuvo históricamente. El dato de la cantidad de ventas es el que indica la
     función cantidadVentasComponente*/
 
+    const cantidadVentasComponente = (componente)=>{
+        let contador=0;
+        for(let item of ventas){
+            for(let component of item[6]){
+                if(component == componente){
+                    contador++;
+                }
+            }
+        }
+        return contador;
+    }
+    
+    test('Contador de cantidad de ventas',()=>{
+        expect(cantidadVentasComponente("Monitor GPRS 3000")).toBe(3);
+    });
+    
+
+
 
 /* 3.  ventasVendedora(nombre): recibe por parámetro el nombre de una vendedora
     y retorna el importe total de ventas realizadas por dicha vendedora.*/
