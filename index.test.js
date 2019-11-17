@@ -56,15 +56,15 @@ test('Suma total de precio de maquina',()=>{
     función cantidadVentasComponente*/
 
     const cantidadVentasComponente = (componente)=>{
-        let contador=0;
+        let contadorVtas=0;
         for(let item of ventas){
             for(let component of item[6]){
                 if(component == componente){
-                    contador++;
+                    contadorVtas++;
                 }
             }
         }
-        return contador;
+        return contadorVtas;
     }
     
     test('Contador de cantidad de ventas',()=>{
