@@ -34,18 +34,15 @@ const sucursales = ['Centro', 'Caballito'];
 */
 const precioMaquina = (monitor,motherboard,hdd,ram) =>{
     let sumaTotal=0;
-        for(let component of precios){
-            if ((component [0] == monitor) || (component[0]==motherboard) || (component[0]==hdd) || (component[0] == ram)){
-                sumaTotal+=component[1]
+        for(let componentPrecio of precios){
+            if ((componentPrecio[0] == monitor) || (componentPrecio[0]==motherboard) || (componentPrecio[0]==hdd) || (componentPrecio[0] == ram)){
+                sumaTotal+=componentPrecio[1]
+                // ES LO MISMO : sumaTotal = sumaTotal+componentPrecio[1]
             }
         }
-    return sumaTotal;
+
+    return `Para armar una maquina necesitas: $${sumaTotal}`;
 };
-
-test('Suma total de precio de maquina',()=>{
-    expect(precioMaquina('Monitor GPRS 3000', 'Motherboard ASUS 1500', 'HDD Toyiva', 'RAM Quinston')).toBe(520);
-});
-
 
 /* 2.  cantidadVentasComponente(componente): recibe el nombre de un componente
     y devuelve la cantidad de veces que fue vendido. La lista de ventas no se 
@@ -57,22 +54,17 @@ test('Suma total de precio de maquina',()=>{
 
     const cantidadVentasComponente = (componente)=>{
         let contadorVtas=0;
-        for(let item of ventas){
-            for(let component of item[6]){
+        for(let venta of ventas){
+            for(let component of venta[6]){
                 if(component == componente){
                     contadorVtas++;
                 }
             }
         }
-        return contadorVtas;
-    }
+        return `${componente} fue vendido ${contadorVtas} veces`;
+    };
     
-    test('Contador de cantidad de ventas',()=>{
-        expect(cantidadVentasComponente("Monitor GPRS 3000")).toBe(3);
-    });
     
-
-
 
 /* 3.  ventasVendedora(nombre): recibe por parámetro el nombre de una vendedora
     y retorna el importe total de ventas realizadas por dicha vendedora.*/
