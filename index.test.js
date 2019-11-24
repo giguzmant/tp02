@@ -64,6 +64,30 @@ const precioMaquina = (monitor,motherboard,hdd,ram) =>{
         return `${componente} fue vendido ${contadorVtas} veces`;
     };
     
+    const componenteMasVendido = () =>{
+        let masFrecuente=1;
+        let acumuladorCompo=0;
+        let componenteMasVendido;
+        let arrComponente =[];
+       for(let venta of ventas){
+           for(let componentes of venta[6]){
+            arrComponente.push(componentes);
+           }   
+        }
+       for (let i = 0; i < arrComponente.length; i++) {
+        acumuladorCompo = 0
+        for (let j = i; j < arrComponente.length; j++) {
+          if (arrComponente[i] == arrComponente[j]){
+            acumuladorCompo++;
+          }
+          if (masFrecuente < acumuladorCompo) {
+            masFrecuente = acumuladorCompo;
+            componenteMasVendido = arrComponente[i];
+          }
+        }
+    }
+      return `El componente mas vendido fue: ${componenteMasVendido}`
+    }
     
 
 /* 3.  ventasVendedora(nombre): recibe por parámetro el nombre de una vendedora
