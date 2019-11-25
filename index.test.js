@@ -115,3 +115,8 @@ const precioMaquina = (monitor,motherboard,hdd,ram) =>{
     datos necesitamos agregar el primer dato que es un identificador de la venta.
     Para agregar este dato, tenemos que usar la función desarrollada en el punto 
     anterior obtenerIdVenta */
+
+
+    test('Devuelve el importe total para armar una maquina',()=>{
+        expect(precioMaquina('Monitor GPRS 3000', 'Motherboard ASUS 1500', 'HDD Toyiva', 'RAM Quinston')).toMatch("Para armar una maquina necesitas: $520");
+    });
