@@ -1,45 +1,44 @@
 const vendedoras = ["Ada", "Grace", "Hedy", "Sheryl"];
 
 const ventas = [
-    [100000000, 4, 2, 2019, 'Grace', 'Centro', ['Monitor GPRS 3000', 'Motherboard ASUS 1500']], //TOTAL VENTAS: $320 - GRACE
-    [100000001, 1, 1, 2019, 'Ada', 'Centro', ['Monitor GPRS 3000', 'Motherboard ASUS 1500']], // TOTAL VENTAS: $320 - ADA
-    [100000002, 2, 1, 2019, 'Grace', 'Caballito', ['Monitor ASC 543', 'Motherboard MZI', 'HDD Toyiva']], //TOTAL VENTAS: $370 - GRACE
-    [100000003, 10, 1, 2019, 'Ada', 'Centro', ['Monitor ASC 543', 'Motherboard ASUS 1200']], //TOTAL VENTAS:  $350 - ADA
-    [100000004, 12, 1, 2019, 'Grace', 'Caballito', ['Monitor GPRS 3000', 'Motherboard ASUS 1200']], //TOTAL VENTAS: $350 - GRACE
-    [100000005, 21, 3, 2019, 'Hedy', 'Caballito', ['Monitor ASC 543', 'Motherboard ASUS 1200', 'RAM Quinston']] //TOTAL VENTAS: $460 - HEDY
+  [ 100000000, 4, 2, 2019, 'Grace', 'Centro', ['Monitor GPRS 3000', 'Motherboard ASUS 1500'] ], 
+  [ 100000001, 1, 1, 2019, 'Ada', 'Centro', ['Monitor GPRS 3000', 'Motherboard ASUS 1500'] ], 
+  [ 100000002, 2, 1, 2019, 'Grace', 'Caballito', ['Monitor ASC 543', 'Motherboard MZI', 'HDD Toyiva'] ],
+  [ 100000003, 10, 1, 2019, 'Ada', 'Centro', ['Monitor ASC 543', 'Motherboard ASUS 1200'] ], 
+  [ 100000004, 12, 1, 2019, 'Grace', 'Caballito', ['Monitor GPRS 3000', 'Motherboard ASUS 1200'] ], 
+  [ 100000005, 21, 3, 2019, 'Hedy', 'Caballito', ['Monitor ASC 543', 'Motherboard ASUS 1200', 'RAM Quinston'] ] 
 ]
 
 const precios = [
-    ['Monitor GPRS 3000', 200],
-    ['Monitor ASC 543', 250],
+    [ 'Monitor GPRS 3000', 200 ],
+    [ 'Monitor ASC 543', 250 ],
 
-    ['Motherboard ASUS 1500', 120],
-    ['Motherboard ASUS 1200', 100],
-    ['Motherboard MZI', 30],
+    [ 'Motherboard ASUS 1500', 120 ],
+    [ 'Motherboard ASUS 1200', 100 ],
+    [ 'Motherboard MZI', 30 ],
 
-    ['HDD Toyiva', 90],
-    ['HDD Wezter Dishital', 75],
+    [ 'HDD Toyiva', 90 ],
+    [ 'HDD Wezter Dishital', 75 ],
 
-    ['RAM Quinston', 110],
-    ['RAM Quinston Fury', 230]
+    [ 'RAM Quinston', 110 ],
+    [ 'RAM Quinston Fury', 230 ]
 ]
 
 const sucursales = ['Centro', 'Caballito'];
-
 
 /*
     1.  precioMaquina(componentes): recibe un array de componentes y devuelve 
     el precio de la máquina que se puede armar con esos componentes, que 
     es la suma de los precios de cada componente incluido.
 */
-const precioMaquina = (monitor, motherboard, hdd, ram) => {
-    let sumaTotal = 0;
-    for (let componentPrecio of precios) {
-        if ((componentPrecio[0] == monitor) || (componentPrecio[0] == motherboard) || (componentPrecio[0] == hdd) || (componentPrecio[0] == ram)) {
-            sumaTotal += componentPrecio[1]
-            // ES LO MISMO : sumaTotal = sumaTotal+componentPrecio[1]
+const precioMaquina = (monitor,motherboard,hdd,ram) =>{
+    let sumaTotal=0;
+        for(let componentPrecio of precios){
+            if ((componentPrecio[0] == monitor) || (componentPrecio[0]==motherboard) || (componentPrecio[0]==hdd) || (componentPrecio[0] == ram)){
+                sumaTotal+=componentPrecio[1]
+                // ES LO MISMO : sumaTotal = sumaTotal+componentPrecio[1]
+            }
         }
-    }
 
     return `Para armar una maquina necesitas: $${sumaTotal}`;
 };
@@ -52,43 +51,44 @@ const precioMaquina = (monitor, motherboard, hdd, ram) => {
     tuvo históricamente. El dato de la cantidad de ventas es el que indica la
     función cantidadVentasComponente*/
 
-const cantidadVentasComponente = (componente) => {
-    let contadorVtas = 0;
-    for (let venta of ventas) {
-        for (let component of venta[6]) {
-            if (component == componente) {
-                contadorVtas++;
+    const cantidadVentasComponente = (componente)=>{
+        let contadorVtas=0;
+        for(let venta of ventas){
+            for(let component of venta[6]){
+                if(component == componente){
+                    contadorVtas++;
+                }
             }
         }
-    }
-    return `${componente} fue vendido ${contadorVtas} veces`;
-};
+        return `${componente} fue vendido ${contadorVtas} veces`;
+    };
 
-const componenteMasVendido = () => {
-    let masFrecuente = 1;
-    let acumuladorCompo = 0;
-    let componenteMasVendido;
-    let arrComponente = [];
-    for (let venta of ventas) {
-        for (let componentes of venta[6]) {
+
+    const componenteMasVendido = () =>{
+        let masFrecuente=1;
+        let acumuladorCompo=0;
+        let componenteMasVendido;
+        let arrComponente =[];
+       for(let venta of ventas){
+           for(let componentes of venta[6]){
             arrComponente.push(componentes);
+           }   
         }
-    }
-    for (let i = 0; i < arrComponente.length; i++) {
+       for (let i = 0; i < arrComponente.length; i++) {
         acumuladorCompo = 0
         for (let j = i; j < arrComponente.length; j++) {
-            if (arrComponente[i] == arrComponente[j]) {
-                acumuladorCompo++;
-            }
-            if (masFrecuente < acumuladorCompo) {
-                masFrecuente = acumuladorCompo;
-                componenteMasVendido = arrComponente[i];
-            }
+          if (arrComponente[i] == arrComponente[j]){
+            acumuladorCompo++;
+          }
+          if (masFrecuente < acumuladorCompo) {
+            masFrecuente = acumuladorCompo;
+            componenteMasVendido = arrComponente[i];
+          }
         }
     }
-    return `El componente mas vendido fue: ${componenteMasVendido}`
-}
-
+      return `El componente mas vendido fue: ${componenteMasVendido}`
+    }
+    
 
 /* 3.  ventasVendedora(nombre): recibe por parámetro el nombre de una vendedora
     y retorna el importe total de ventas realizadas por dicha vendedora.*/
