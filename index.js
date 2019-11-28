@@ -111,7 +111,7 @@ const componenteMasVendido = () => {
 
 const obtenerIdVenta = () => {
     return Math.floor(Math.random() * (999999999 - 100000000 + 1) + 100000000);
-}
+};
 
 /*  9.  agregarVenta(dia, mes, anio, vendedora, sucursal, componentes): recibe por
  parámetro todos los datos de una venta, y los agrega en el array de ventas.
@@ -120,15 +120,22 @@ const obtenerIdVenta = () => {
  Para agregar este dato, tenemos que usar la función desarrollada en el punto 
  anterior obtenerIdVenta */
 
+const agregarVenta = (dia, mes, anio, vendedora, sucursal, componentes) => {
+    ventas.push(obtenerIdVenta(), dia, mes, anio, vendedora, sucursal, [componentes])
+};
 
-   
- 
+
+
+
+
+
 
 module.exports = {
     precioMaquina,
     cantidadVentasComponente,
     componenteMasVendido,
-    obtenerIdVenta
+    obtenerIdVenta,
+    agregarVenta,
 }
 
 

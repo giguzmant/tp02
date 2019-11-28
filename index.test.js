@@ -2,7 +2,8 @@ const {
     precioMaquina,
     cantidadVentasComponente,
     componenteMasVendido,
-    obtenerIdVenta
+    obtenerIdVenta,
+    agregarVenta,
 } = require('./index');
 
 /**1 */
@@ -24,4 +25,15 @@ test('Devuelve el componente mas vendido', () => {
 test('Obtener el id de cada venta', () => {
     expect(obtenerIdVenta()).toBeGreaterThanOrEqual(100000000);
     expect(obtenerIdVenta()).toBeLessThanOrEqual(999999999)
+});
+
+/**9 */
+
+test('Agregar el id a ventas', () => {
+    let venta = [obtenerIdVenta(), 4, 4, 2019, 'Flor', 'Centro', ['Monitor GPRS 3006']];
+    agregarVenta(...venta);
+    expect(venta.length).toBe(7);
+
+    expect(obtenerIdVenta()).toBeGreaterThanOrEqual(100000000);
+    expect(obtenerIdVenta()).toBeLessThanOrEqual(999999999);
 });
