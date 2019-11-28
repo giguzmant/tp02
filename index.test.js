@@ -4,6 +4,7 @@ const {
     componenteMasVendido,
     obtenerIdVenta,
     agregarVenta,
+    ventaPromedio
 } = require('./index');
 
 /**1 */
@@ -20,6 +21,10 @@ test('Devuelve la cantidad de ventas por componente', () => {
 test('Devuelve el componente mas vendido', () => {
     expect(componenteMasVendido()).toMatch("El componente mas vendido fue: Monitor GPRS 3000");
 })
+/**7 */
+test('Devuelve promedio de ventas', () => {
+    expect(ventaPromedio()).toMatch("El promedio general es de $ 353 por cada venta");
+});
 
 /**8 */
 test('Obtener el id de cada venta', () => {
@@ -37,3 +42,4 @@ test('Agregar el id a ventas', () => {
     expect(obtenerIdVenta()).toBeGreaterThanOrEqual(100000000);
     expect(obtenerIdVenta()).toBeLessThanOrEqual(999999999);
 });
+

@@ -106,6 +106,72 @@ const precioMaquina = (monitor,motherboard,hdd,ram) =>{
     entero sin decimales redondeado siempre para abajo. */
 
 
+//////EXPLICACIÓN/////
+
+// 1. Buscar los items dentro del array ventas en la posic. venta[6].
+// 2. Acceder al precio de cada venta.
+// 3. Acceder a cada item que fue vendido en c/u de los array.
+// 4. Si el item vendido que es un string es igual al primer item de precio en la posicion 0 hago lo siguiente:
+// 5. Tengo que acceder a la posic.[1] de precio para realizar la suma. Entonces ventasPromedio = ventasPromedio + precio[1]
+/*6. ACLARACIÓN: podemos ver que mi if() va a hacer un loop de cada venta realizada en mi const ventas. Por lo tanto va a buscar
+                 los primeros 2 elementos de mi primera venta, luego los de mi segunda venta y así sucesivamente.
+                 De esta forma obtengo  las ventasPromedio total de todos los productos vendidos. */
+
+//7. Accedo a mi const ventas donde llamo a venta para poder obtener la cantidad  total de ventas de productos. Tiene que dar 14.
+//Saco la cantidad de ventas para calcular el promedio.
+//8. Por último calculo el promedio total de ventas que va ser igual a = ventasPromedio / la cant. de ventas//
+
+/***Utilizo ForEach para acceder a cada uno de los elementos del array */
+/***Hago una const para calcular el promedio donde llamo por parametro a la suma de promedio y cant. de ventas */
+
+/*const calcularPromedio = (sumatoria, cantidad) => {
+   //ULTIMO
+    return Math.floor(sumatoria / cantidad);
+};
+
+let ventasPromedio = 0;
+let cantidadDeVentas = 0;
+
+/*const calcularPromedioPorVenta = (venta) => {
+    return precios.forEach(precio => {
+        venta[6].forEach(itemVendido => {
+            // precio: ['Monitor GPRS 3000', 200]
+            // itemVendido: 'Monitor GPRS 3000'
+            if (itemVendido === precio[0]) {
+                ventasPromedio += precio[1];
+            }
+        })
+    })
+};*/
+
+/*ventas.forEach(venta => {
+    cantidadDeVentas += ventas.length;
+})*/
+
+
+
+
+
+const ventaPromedio = () =>{
+
+    let ventasPromedio = 0;
+    let cantidadDeVentas = 0;
+
+   for(let venta of ventas){
+        cantidadDeVentas++;
+        precios.forEach(precio => {
+            venta[6].forEach(itemVendido => {
+                if (itemVendido === precio[0]) {
+                    ventasPromedio += precio[1];
+                }
+            })
+        });
+    }
+
+let promedio= ventasPromedio/cantidadDeVentas
+return `El promedio general es de $ ${Math.floor(promedio)} por cada venta`;
+}
+
 /*  8.  obtenerIdVenta(): Tiene que retornar un número aleatorio entre 100000000 y 
     99999999*/
 
@@ -136,6 +202,7 @@ module.exports = {
     componenteMasVendido,
     obtenerIdVenta,
     agregarVenta,
+    ventaPromedio
 }
 
 
