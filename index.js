@@ -118,6 +118,19 @@ const precioMaquina = (monitor,motherboard,hdd,ram) =>{
 
 /*  6.  mejorVendedora(): Devuelve el nombre de la vendedora que más ingresos generó */
 
+const mejorVendedora = () => {
+    let contador = 0;
+    let mejorVendedora= "";
+    for(let venta of ventas){
+        const vendedora= ventasVendedora(venta[4]);
+        if(vendedora>contador){
+            contador = vendedora;
+            mejorVendedora = venta[4] 
+        }
+    }
+    return `La mejor vendedora fue: ${mejorVendedora}`;
+}
+
 
 /*  7.  ventaPromedio(): Debe retornar el importe promedio por venta, como un número
     entero sin decimales redondeado siempre para abajo. */
@@ -170,7 +183,8 @@ module.exports = {
     agregarVenta,
     ventasVendedora,
     ventasSucursal,
-    ventaPromedio
+    ventaPromedio,
+    mejorVendedora
 }
 
 

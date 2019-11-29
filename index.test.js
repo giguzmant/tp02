@@ -6,7 +6,8 @@ const {
     agregarVenta,
     ventasVendedora,
     ventasSucursal,
-    ventaPromedio
+    ventaPromedio,
+    mejorVendedora
 } = require('./index');
 
 /**1 */
@@ -30,8 +31,11 @@ test('Devuelve el componente mas vendido', () => {
 test ('recibe una sucursal y devuelve el importe total de sus ventas',() => {
     expect (ventasSucursal('Caballito')).toBe("El importe total de ventas que se realizaron en la sucursal 'Caballito' fue $1130")
 })
+/**6 */
+test('Devuelve el nombre de la mejor vendedora', () => {
+    expect(mejorVendedora()).toMatch("La mejor vendedora fue: Grace");
+});
 /**7 */
-
 test('Devuelve el promedio por cada venta', () => {
     expect(ventaPromedio()).toMatch("El promedio general es de $ 353 por cada venta")
 });
