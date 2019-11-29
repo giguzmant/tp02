@@ -82,7 +82,25 @@ const precioMaquina = (monitor,motherboard,hdd,ram) =>{
         }
         return `El componente mas vendido fue: ${componenteMasVendido}`;
     }
-    
+
+/* 3.  ventasVendedora(nombre): recibe por parámetro el nombre de una vendedora
+    y retorna el importe total de ventas realizadas por dicha vendedora.*/
+
+    const ventasVendedora = (nombre) =>{
+        let contadorVtas=0;
+        for(let venta of ventas){
+            if(nombre == venta[4]){
+                for(let componentVta of venta[6]){
+                    for(let componentPrecio of precios){
+                        if(componentVta == componentPrecio[0]){
+                            contadorVtas+=componentPrecio[1]
+                        }
+                    }
+                }
+            }
+        }
+        return contadorVtas;
+    }
 
 /*  5.  ventasSucursal(sucursal): recibe por parámetro el nombre de una sucursal y
     retorna el importe de las ventas totales realizadas por una sucursal sin 
@@ -192,6 +210,7 @@ module.exports = {
     componenteMasVendido,
     obtenerIdVenta,
     agregarVenta,
+    ventasVendedora,
     ventaPromedio
 }
 

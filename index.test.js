@@ -4,6 +4,7 @@ const {
     componenteMasVendido,
     obtenerIdVenta,
     agregarVenta,
+    ventasVendedora,
     ventaPromedio
 } = require('./index');
 
@@ -16,7 +17,10 @@ test('Devuelve el importe total para armar una maquina', () => {
 test('Devuelve la cantidad de ventas por componente', () => {
     expect(cantidadVentasComponente('Motherboard ASUS 1500')).toBe(2);
 });
-
+/**3 */
+test ('recibe nombre de vendedora y devuelve el total de sus ventas',() => { 
+    expect (ventasVendedora('Grace')).toMatch("El importe total de ventas que realizó Grace fue $990")
+});
 /**4 */
 test('Devuelve el componente mas vendido', () => {
     expect(componenteMasVendido()).toMatch("El componente mas vendido fue: Monitor ASC 543");
