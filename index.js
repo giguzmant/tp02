@@ -141,6 +141,28 @@ const precioMaquina = (monitor,motherboard,hdd,ram) =>{
 /***Utilizo ForEach para acceder a cada uno de los elementos del array */
 /***Hago una const para calcular el promedio donde llamo por parametro a la suma de promedio y cant. de ventas */
 
+const ventaPromedio = () => {
+
+    let ventasPromedio = 0;
+    let cantidadDeVentas = 0;
+
+    for (let venta of ventas) {
+        cantidadDeVentas++;
+        precios.forEach(precio => {
+            venta[6].forEach(itemVendido => {
+                // precio: ['Monitor GPRS 3000', 200]
+                // itemVendido: 'Monitor GPRS 3000'
+                if (itemVendido === precio[0]) {
+                    ventasPromedio += precio[1];
+                }
+            })
+        });
+    }
+
+    let promedio = ventasPromedio / cantidadDeVentas
+    return `El promedio general es de $ ${Math.floor(promedio)} por cada venta`;
+}
+
 /*const calcularPromedio = (sumatoria, cantidad) => {
    //ULTIMO
     return Math.floor(sumatoria / cantidad);
@@ -195,6 +217,7 @@ module.exports = {
     agregarVenta,
     ventasVendedora,
     ventasSucursal,
+    ventaPromedio
 }
 
 

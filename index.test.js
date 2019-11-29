@@ -6,7 +6,7 @@ const {
     agregarVenta,
     ventasVendedora,
     ventasSucursal,
-    
+    ventaPromedio
 } = require('./index');
 
 /**1 */
@@ -32,7 +32,9 @@ test ('recibe una sucursal y devuelve el importe total de sus ventas',() => {
 })
 /**7 */
 
-
+test('Devuelve el promedio por cada venta', () => {
+    expect(ventaPromedio()).toMatch("El promedio general es de $ 353 por cada venta")
+});
 
 /**8 */
 test('Obtener el id de cada venta', () => {
