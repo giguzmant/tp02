@@ -19,7 +19,7 @@ test('Devuelve la cantidad de ventas por componente', () => {
 });
 /**3 */
 test ('recibe nombre de vendedora y devuelve el total de sus ventas',() => { 
-    expect (ventasVendedora('Grace')).toMatch("El importe total de ventas que realizó Grace fue $990")
+    expect (ventasVendedora('Grace')).toBe(990)
 });
 /**4 */
 test('Devuelve el componente mas vendido', () => {
