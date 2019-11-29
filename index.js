@@ -174,28 +174,6 @@ let cantidadDeVentas = 0;
 
 
 
-
-
-const ventaPromedio = () =>{
-
-    let ventasPromedio = 0;
-    let cantidadDeVentas = 0;
-
-   for(let venta of ventas){
-        cantidadDeVentas++;
-        precios.forEach(precio => {
-            venta[6].forEach(itemVendido => {
-                if (itemVendido === precio[0]) {
-                    ventasPromedio += precio[1];
-                }
-            })
-        });
-    }
-
-let promedio= ventasPromedio/cantidadDeVentas
-return `El promedio general es de $ ${Math.floor(promedio)} por cada venta`;
-}
-
 /*  8.  obtenerIdVenta(): Tiene que retornar un número aleatorio entre 100000000 y 
     99999999*/
 
