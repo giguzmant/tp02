@@ -14,12 +14,12 @@ test('Devuelve el importe total para armar una maquina', () => {
 
 /**2 */
 test('Devuelve la cantidad de ventas por componente', () => {
-    expect(cantidadVentasComponente('Motherboard ASUS 1500')).toMatch("Motherboard ASUS 1500 fue vendido 2 veces");
+    expect(cantidadVentasComponente('Motherboard ASUS 1500')).toBe(2);
 });
 
 /**4 */
 test('Devuelve el componente mas vendido', () => {
-    expect(componenteMasVendido()).toMatch("El componente mas vendido fue: Monitor GPRS 3000");
+    expect(componenteMasVendido()).toMatch("El componente mas vendido fue: Monitor ASC 543");
 })
 /**7 */
 test('Devuelve promedio de ventas', () => {

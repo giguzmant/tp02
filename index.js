@@ -36,7 +36,6 @@ const precioMaquina = (monitor,motherboard,hdd,ram) =>{
         for(let componentPrecio of precios){
             if ((componentPrecio[0] == monitor) || (componentPrecio[0]==motherboard) || (componentPrecio[0]==hdd) || (componentPrecio[0] == ram)){
                 sumaTotal+=componentPrecio[1]
-                // ES LO MISMO : sumaTotal = sumaTotal+componentPrecio[1]
             }
         }
 
@@ -45,11 +44,7 @@ const precioMaquina = (monitor,motherboard,hdd,ram) =>{
 
 /* 2.  cantidadVentasComponente(componente): recibe el nombre de un componente
     y devuelve la cantidad de veces que fue vendido. La lista de ventas no se 
-    pasa por parámetro, se asume que está identificada por la variable ventas.
-
-    4.  componenteMasVendido(): Devuelve el nombre del componente que más ventas
-    tuvo históricamente. El dato de la cantidad de ventas es el que indica la
-    función cantidadVentasComponente*/
+    pasa por parámetro, se asume que está identificada por la variable ventas.*/
 
     const cantidadVentasComponente = (componente)=>{
         let contadorVtas=0;
@@ -60,39 +55,34 @@ const precioMaquina = (monitor,motherboard,hdd,ram) =>{
                 }
             }
         }
-        return `${componente} fue vendido ${contadorVtas} veces`;
+        return contadorVtas;
     };
-
-
-    const componenteMasVendido = () =>{
-        let masFrecuente=1;
-        let acumuladorCompo=0;
-        let componenteMasVendido;
-        let arrComponente =[];
-       for(let venta of ventas){
-           for(let componentes of venta[6]){
-            arrComponente.push(componentes);
-           }   
-        }
-       for (let i = 0; i < arrComponente.length; i++) {
-        acumuladorCompo = 0
-        for (let j = i; j < arrComponente.length; j++) {
-          if (arrComponente[i] == arrComponente[j]){
-            acumuladorCompo++;
-          }
-          if (masFrecuente < acumuladorCompo) {
-            masFrecuente = acumuladorCompo;
-            componenteMasVendido = arrComponente[i];
-          }
-        }
-    }
-      return `El componente mas vendido fue: ${componenteMasVendido}`
-    }
-    
-
-/* 3.  ventasVendedora(nombre): recibe por parámetro el nombre de una vendedora
+    /* 3.  ventasVendedora(nombre): recibe por parámetro el nombre de una vendedora
     y retorna el importe total de ventas realizadas por dicha vendedora.*/
 
+
+
+
+
+
+
+   /*  4.  componenteMasVendido(): Devuelve el nombre del componente que más ventas
+    tuvo históricamente. El dato de la cantidad de ventas es el que indica la
+    función cantidadVentasComponente*/
+
+    const componenteMasVendido = () => {
+        let contador = 0;
+        let componenteMasVendido= "";
+        for(let precio of precios){
+            const componenteVendido= cantidadVentasComponente(precio[0]);
+            if(componenteVendido>contador){
+                contador = componenteMasVendido;
+                componenteMasVendido = precio[0] 
+            }
+        }
+        return `El componente mas vendido fue: ${componenteMasVendido}`;
+    }
+    
 
 /*  5.  ventasSucursal(sucursal): recibe por parámetro el nombre de una sucursal y
     retorna el importe de las ventas totales realizadas por una sucursal sin 
