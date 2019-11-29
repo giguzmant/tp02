@@ -112,7 +112,23 @@ const componenteMasVendido = () => {
 /*  5.  ventasSucursal(sucursal): recibe por parámetro el nombre de una sucursal y
     retorna el importe de las ventas totales realizadas por una sucursal sin 
     límite de fecha. */
-
+    
+    const ventasSucursal=(sucursal) =>{
+        let vtasTotalesSuc=0;
+        for(let venta of ventas){
+            if(sucursal == venta[5]){
+                for(let componentVta of venta[6]){
+                    for(let componentPrecio of precios){
+                        if(componentVta == componentPrecio[0]){
+                            vtasTotalesSuc+=componentPrecio[1]
+                        }
+                    }
+                }
+            }
+        }
+        return `El importe total de ventas que se realizaron en la sucursal '${sucursal}' fue $${vtasTotalesSuc}`;
+        
+    },
 
 /*  6.  mejorVendedora(): Devuelve el nombre de la vendedora que más ingresos generó */
 
@@ -151,7 +167,8 @@ module.exports = {
     componenteMasVendido,
     obtenerIdVenta,
     agregarVenta,
-    ventasVendedora
+    ventasVendedora,
+    ventasSucursal
 }
 
 
