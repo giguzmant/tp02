@@ -105,7 +105,23 @@ const precioMaquina = (monitor,motherboard,hdd,ram) =>{
 /*  5.  ventasSucursal(sucursal): recibe por parámetro el nombre de una sucursal y
     retorna el importe de las ventas totales realizadas por una sucursal sin 
     límite de fecha. */
-
+    
+    const ventasSucursal=(sucursal) =>{
+        let vtasTotalesSuc=0;
+        for(let venta of ventas){
+            if(sucursal == venta[5]){
+                for(let componentVta of venta[6]){
+                    for(let componentPrecio of precios){
+                        if(componentVta == componentPrecio[0]){
+                            vtasTotalesSuc+=componentPrecio[1]
+                        }
+                    }
+                }
+            }
+        }
+        return `El importe total de ventas que se realizaron en la sucursal '${sucursal}' fue $${vtasTotalesSuc}`;
+        
+    },
 
 /*  6.  mejorVendedora(): Devuelve el nombre de la vendedora que más ingresos generó */
 
@@ -158,28 +174,6 @@ let cantidadDeVentas = 0;
 
 
 
-
-
-const ventaPromedio = () =>{
-
-    let ventasPromedio = 0;
-    let cantidadDeVentas = 0;
-
-   for(let venta of ventas){
-        cantidadDeVentas++;
-        precios.forEach(precio => {
-            venta[6].forEach(itemVendido => {
-                if (itemVendido === precio[0]) {
-                    ventasPromedio += precio[1];
-                }
-            })
-        });
-    }
-
-let promedio= ventasPromedio/cantidadDeVentas
-return `El promedio general es de $ ${Math.floor(promedio)} por cada venta`;
-}
-
 /*  8.  obtenerIdVenta(): Tiene que retornar un número aleatorio entre 100000000 y 
     99999999*/
 
@@ -211,6 +205,7 @@ module.exports = {
     obtenerIdVenta,
     agregarVenta,
     ventasVendedora,
+    ventasSucursal,
     ventaPromedio
 }
 

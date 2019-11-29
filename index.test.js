@@ -5,6 +5,7 @@ const {
     obtenerIdVenta,
     agregarVenta,
     ventasVendedora,
+    ventasSucursal,
     ventaPromedio
 } = require('./index');
 
@@ -24,6 +25,10 @@ test ('recibe nombre de vendedora y devuelve el total de sus ventas',() => {
 /**4 */
 test('Devuelve el componente mas vendido', () => {
     expect(componenteMasVendido()).toMatch("El componente mas vendido fue: Monitor ASC 543");
+})
+/**5 */
+test ('recibe una sucursal y devuelve el importe total de sus ventas',() => {
+    expect (ventasSucursal('Caballito')).toBe(1130)
 })
 /**7 */
 test('Devuelve promedio de ventas', () => {
