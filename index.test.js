@@ -11,8 +11,8 @@ const {
 } = require('./index');
 
 /**1 */
-test('Devuelve el importe total para armar una maquina', () => {
-    expect(precioMaquina('Monitor GPRS 3000', 'Motherboard ASUS 1500', 'HDD Toyiva', 'RAM Quinston')).toMatch("Para armar una maquina necesitas: $520");
+test('Recibe un array de componentes y devuelve el importe total para armar una maquina', () => {
+    expect(precioMaquina(['Monitor GPRS 3000', 'Motherboard ASUS 1500', 'HDD Toyiva', 'RAM Quinston'])).toMatch("Para armar una maquina necesitas: $520");
 });
 
 /**2 */
