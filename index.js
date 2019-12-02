@@ -31,16 +31,17 @@ const sucursales = ['Centro', 'Caballito'];
     el precio de la máquina que se puede armar con esos componentes, que 
     es la suma de los precios de cada componente incluido.
 */
-const precioMaquina = (monitor,motherboard,hdd,ram) =>{
+const precioMaquina = ([...componentes]) =>{
     let sumaTotal=0;
-        for(let componentPrecio of precios){
-            if ((componentPrecio[0] == monitor) || (componentPrecio[0]==motherboard) || (componentPrecio[0]==hdd) || (componentPrecio[0] == ram)){
+    for(let componentPrecio of precios){
+        for(let componente of componentes){
+            if (componentPrecio[0] == componente){
                 sumaTotal+=componentPrecio[1]
             }
         }
-
-    return `Para armar una maquina necesitas: $${sumaTotal}`;
-};
+    }
+return `Para armar una maquina necesitas: $${sumaTotal}`;
+}
 
 /* 2.  cantidadVentasComponente(componente): recibe el nombre de un componente
     y devuelve la cantidad de veces que fue vendido. La lista de ventas no se 
@@ -174,6 +175,19 @@ const obtenerIdVenta = () => {
 const agregarVenta = (dia, mes, anio, vendedora, sucursal, componentes) => {
     ventas.push(obtenerIdVenta(), dia, mes, anio, vendedora, sucursal, [componentes])
 };
+
+/**EJECUTABLES*/
+
+console.log( precioMaquina(["Monitor GPRS 3000", "Motherboard ASUS 1500"]));
+console.log( cantidadVentasComponente("Monitor ASC 543"));
+console.log( ventasVendedora("Grace"));
+console.log( componenteMasVendido());
+console.log( ventasSucursal("Centro"));
+console.log( mejorVendedora()); 
+console.log( ventaPromedio()); 
+console.log( obtenerIdVenta()); 
+
+
 
 module.exports = {
     precioMaquina,
