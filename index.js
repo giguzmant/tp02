@@ -172,8 +172,8 @@ const obtenerIdVenta = () => {
  Para agregar este dato, tenemos que usar la función desarrollada en el punto 
  anterior obtenerIdVenta */
 
-const agregarVenta = (dia, mes, anio, vendedora, sucursal, componentes) => {
-    ventas.push(obtenerIdVenta(), dia, mes, anio, vendedora, sucursal, [componentes])
+const agregarVenta = (dia, mes, anio, vendedora, sucursal, ...componentes) => {
+    ventas.push([obtenerIdVenta(), dia, mes, anio, vendedora, sucursal, [...componentes]])
 };
 
 /**EJECUTABLES*/
