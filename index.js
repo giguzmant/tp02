@@ -31,7 +31,9 @@ const sucursales = ['Centro', 'Caballito'];
     el precio de la máquina que se puede armar con esos componentes, que 
     es la suma de los precios de cada componente incluido.
 */
-const precioMaquina = ([...componentes]) =>{
+// El parametro como spread operator dentro de un array es lo mismo que 
+// simplemente poner ... = (componentes) =>...
+const precioMaquina = ([...componentes]) =>{ 
     let sumaTotal=0;
     for(let componentPrecio of precios){
         for(let componente of componentes){
@@ -40,6 +42,7 @@ const precioMaquina = ([...componentes]) =>{
             }
         }
     }
+    //Deberia retornar solo el numero, no el texto
 return `Para armar una maquina necesitas: $${sumaTotal}`;
 }
 
@@ -93,6 +96,7 @@ return `Para armar una maquina necesitas: $${sumaTotal}`;
                 componenteMasVendido = precio[0] 
             }
         }
+        // Debe devolver el nombre, no el texto entero.
         return `El componente mas vendido fue: ${componenteMasVendido}`;
     }
 
@@ -113,6 +117,7 @@ return `Para armar una maquina necesitas: $${sumaTotal}`;
                 }
             }
         }
+        //Debe devolver el importe unicamente, no el texto
         return `El importe total de ventas que se realizaron en la sucursal '${sucursal}' fue $${vtasTotalesSuc}`;
         
     }
@@ -122,6 +127,9 @@ return `Para armar una maquina necesitas: $${sumaTotal}`;
 const mejorVendedora = () => {
     let contador = 0;
     let mejorVendedora= "";
+    // Esto deberia loopear por las vendedoras, no por las ventas.
+    // Yo hago el for cada vendedora y le paso como parametro esa vendedora y ya esta.
+    // ASi no accedo a cada indice de un array mucho mas grande
     for(let venta of ventas){
         const vendedora= ventasVendedora(venta[4]);
         if(vendedora>contador){
@@ -129,6 +137,7 @@ const mejorVendedora = () => {
             mejorVendedora = venta[4] 
         }
     }
+    // Debe deolver el nombre de la vendedora unicamente, no el texto entero.
     return `La mejor vendedora fue: ${mejorVendedora}`;
 }
 
@@ -139,6 +148,7 @@ const mejorVendedora = () => {
 const ventaPromedio = () => {
 
     let ventasPromedio = 0;
+    // CAntidad de ventas no sirve, se reemplaza por ventas.length
     let cantidadDeVentas = 0;
 
     for (let venta of ventas) {
@@ -154,7 +164,9 @@ const ventaPromedio = () => {
         });
     }
 
+    // reemplazar cantidadDeVentas por ventas.length
     let promedio = ventasPromedio / cantidadDeVentas
+    // Debe retornar el numero, no el texto.
     return `El promedio general es de $ ${Math.floor(promedio)} por cada venta`;
 }
 
@@ -172,7 +184,10 @@ const obtenerIdVenta = () => {
  Para agregar este dato, tenemos que usar la función desarrollada en el punto 
  anterior obtenerIdVenta */
 
+ // El spread operator de componentes no es necesario si le paso un array como parametro.
+ // Solo con poner ", sucursal, componentes) =>"  esta bien
 const agregarVenta = (dia, mes, anio, vendedora, sucursal, ...componentes) => {
+    // Componentes no necesita spread operator ni meter el resultado en un array. Solo con usar variable componentes esta bien.
     ventas.push([obtenerIdVenta(), dia, mes, anio, vendedora, sucursal, [...componentes]])
 };
 
