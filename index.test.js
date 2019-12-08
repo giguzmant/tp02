@@ -1,3 +1,6 @@
+/**
+ * Cambiar los textos por los resultados que pedi en las funciones.
+ */
 const {
     precioMaquina,
     cantidadVentasComponente,
