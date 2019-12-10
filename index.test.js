@@ -15,7 +15,7 @@ const {
 
 /**1 */
 test('Recibe un array de componentes y devuelve el importe total para armar una maquina', () => {
-    expect(precioMaquina(['Monitor GPRS 3000', 'Motherboard ASUS 1500', 'HDD Toyiva', 'RAM Quinston'])).toMatch("Para armar una maquina necesitas: $520");
+    expect(precioMaquina(['Monitor GPRS 3000', 'Motherboard ASUS 1500', 'HDD Toyiva', 'RAM Quinston'])).toBe(520);
 });
 
 /**2 */
@@ -28,19 +28,19 @@ test ('recibe nombre de vendedora y devuelve el total de sus ventas',() => {
 });
 /**4 */
 test('Devuelve el componente mas vendido', () => {
-    expect(componenteMasVendido()).toMatch("El componente mas vendido fue: Monitor ASC 543");
+    expect(componenteMasVendido()).toMatch("Monitor ASC 543");
 })
 /**5 */
 test ('recibe una sucursal y devuelve el importe total de sus ventas',() => {
-    expect (ventasSucursal('Caballito')).toBe("El importe total de ventas que se realizaron en la sucursal 'Caballito' fue $1130")
+    expect (ventasSucursal('Caballito')).toBe(1130)
 })
 /**6 */
 test('Devuelve el nombre de la mejor vendedora', () => {
-    expect(mejorVendedora()).toMatch("La mejor vendedora fue: Grace");
+    expect(mejorVendedora()).toMatch("Grace");
 });
 /**7 */
 test('Devuelve el promedio por cada venta', () => {
-    expect(ventaPromedio()).toMatch("El promedio general es de $ 353 por cada venta")
+    expect(ventaPromedio()).toBe(353)
 });
 
 /**8 */
